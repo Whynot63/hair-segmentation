@@ -31,14 +31,6 @@ def get_args():
 
 def setDevice(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = f"{args.device}"
-    if args.device == -1:
-        return
-
-    gpus = tf.config.experimental.list_physical_devices("GPU")
-    try:
-        tf.config.experimental.set_memory_growth(gpus[int(args.device)], True)
-    except RuntimeError as e:
-        print(e)
 
 
 def pathFolderCheckpoint(path_model):
