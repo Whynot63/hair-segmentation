@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 ),
             )
             shutil.copyfile(
-                image,
+                mask,
                 os.path.join(
                     DATASET_OUTPUT_DIR, split, "mask", f"CelebA{i}.png"
                 ),
