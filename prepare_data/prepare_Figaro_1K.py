@@ -38,13 +38,13 @@ if __name__ == "__main__":
             shutil.copyfile(
                 image,
                 os.path.join(
-                    DATASET_OUTPUT_DIR, split, "image", f"CelebA{i}.jpg"
+                    DATASET_OUTPUT_DIR, split, "image", f"Figaro1K{i}.jpg"
                 ),
             )
             shutil.copyfile(
                 image,
                 os.path.join(
-                    DATASET_OUTPUT_DIR, split, "mask", f"CelebA{i}.png"
+                    DATASET_OUTPUT_DIR, split, "mask", f"Figaro1K{i}.png"
                 ),
             )
 
