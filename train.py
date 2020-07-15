@@ -33,19 +33,14 @@ def get_args():
 
 def setDevice(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = f"{args.device}"
+    if args.device == -1:
+        return
 
-    if not args.device == -1:
-        config = tf.ConfigProto()
-        config.gpu_options.allow_growth = (
-            True  # dynamically grow the memory used on the GPU
-        )
-        config.log_device_placement = (
-            True  # to log device placement (on which device the operation ran)
-        )
-        sess = tf.Session(config=config)
-        set_session(
-            sess
-        )  # set this TensorFlow session as the default session for Keras
+    gpus = tf.config.experimental.list_physical_devices("GPU")
+    try:
+        tf.config.experimental.set_memory_growth(gpus[int(args.device)], True)
+    except RuntimeError as e:
+        print(e)
 
 
 def pathFolderCheckpoint(path_model):
