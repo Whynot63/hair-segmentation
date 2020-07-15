@@ -102,7 +102,9 @@ def getModel(args):
 def getCallback(args):
 
     model_checkpoint = ModelCheckpoint(
-        os.path.join(args.path_model, "checkpoint.hdf5"),
+        os.path.join(
+            args.path_model, "weights.{epoch:02d}-{val_loss:.2f}.hdf5"
+        ),
         monitor="loss",
         verbose=1,
         save_best_only=True,
