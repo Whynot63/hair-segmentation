@@ -3,7 +3,7 @@ import argparse
 from keras.callbacks import ModelCheckpoint, CSVLogger, LearningRateScheduler
 import keras
 
-from keras.optimizers import Adam
+from keras.optimizers import Adadelta
 import tensorflow as tf
 
 from data_generator import dataGenerator
@@ -91,7 +91,7 @@ def getModel(args):
     model = get_model()
 
     model.compile(
-        optimizer=Adam(lr=args.lr),
+        optimizer=Adadelta(learning_rate=1, rho=0.95, epsilon=1e-07),
         loss="binary_crossentropy",
         metrics=["accuracy"],
     )
