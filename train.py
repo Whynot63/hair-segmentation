@@ -2,8 +2,6 @@ import argparse
 
 from keras.callbacks import ModelCheckpoint, CSVLogger, LearningRateScheduler
 import keras
-from keras import backend as K
-from keras.backend.tensorflow_backend import set_session
 
 from keras.optimizers import Adam
 import tensorflow as tf
